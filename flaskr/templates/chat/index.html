@@ -1,0 +1,30 @@
+{% extends 'base.html' %} {% block content %} {% for m in messages %}
+<p><b>Tú:</b> {{ m.message }}</p>
+<p><b>Bot:</b> {{ m.response }}</p>
+{% endfor %}
+
+<input id="miInput" placeholder="Escribí un mensaje..." />
+<button onclick="enviar()">Enviar</button>
+
+<div id="respuesta"></div>
+
+<script>
+    function enviar() {
+        const valor = miInput.value;
+        if (!valor.trim()) return;
+
+        fetch("/chat", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ texto: valor }),
+        })
+            .then((r) => r.json())
+            .then((data) => {
+                respuesta.innerHTML += `<p><b>Tú:</b> ${valor}</p>
+           <p><b>Bot:</b> ${data.resultado}</p>`;
+                miInput.value = "";
+            });
+    }
+</script>
+
+{% endblock %}

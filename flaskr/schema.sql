@@ -1,0 +1,9 @@
+DROP TABLE IF EXISTS chat;
+
+CREATE TABLE chat (
+  id INTEGER PRIMARY KEY AUTOINCREMENT,
+  session_id TEXT,
+  message TEXT,
+  response TEXT,
+  date DATETIME DEFAULT CURRENT_TIMESTAMP
+);
