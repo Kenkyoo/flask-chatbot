@@ -1,9 +1,46 @@
 <!doctype html>
 <title>{% block title %}{% endblock %} - Flaskr</title>
 <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}" />
-<section class="content">
-    <header>{% block header %}{% endblock %}</header>
-    {% for message in get_flashed_messages() %}
-    <div class="flash">{{ message }}</div>
-    {% endfor %} {% block content %}{% endblock %}
+<link
+    rel="stylesheet"
+    href="https://cdn.jsdelivr.net/npm/bulma@1.0.4/css/bulma.min.css"
+/>
+<section class="hero is-primary is-medium">
+    <!-- Hero head: will stick at the top -->
+    <div class="hero-head">
+        <nav class="navbar">
+            <div class="container">
+                <div class="navbar-brand">
+                    <a class="navbar-item">
+                        <img
+                            src="https://bulma.io/assets/images/bulma-type-white.png"
+                            alt="Logo"
+                        />
+                    </a>
+                    <span class="navbar-burger" data-target="navbarMenuHeroA">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </span>
+                </div>
+                <div id="navbarMenuHeroA" class="navbar-menu">
+                    <div class="navbar-end">
+                        <a class="navbar-item is-active"> Home </a>
+                        <a class="navbar-item"> Examples </a>
+                        <a class="navbar-item"> Documentation </a>
+                        <span class="navbar-item">
+                            <a class="button is-primary is-inverted">
+                                <span class="icon">
+                                    <i class="fab fa-github"></i>
+                                </span>
+                                <span>Download</span>
+                            </a>
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </div>
+    {% block content %} {% endblock %}
 </section>

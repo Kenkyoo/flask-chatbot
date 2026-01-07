@@ -1,13 +1,35 @@
+<!doctype html>
+<title>{% block title %}{% endblock %} - Flaskr</title>
+<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}" />
+<link
+    rel="stylesheet"
+    href="https://cdn.jsdelivr.net/npm/bulma@1.0.4/css/bulma.min.css"
+/>
 {% extends 'base.html' %} {% block content %} {% for m in messages %}
-<p><b>Tú:</b> {{ m.message }}</p>
-<p><b>Bot:</b> {{ m.response }}</p>
+<div class="hero-body">
+    <div class="container has-text-centered">
+        <article class="message">
+            <div class="message-header">
+                <p>Tu</p>
+                <button class="delete" aria-label="delete"></button>
+            </div>
+            <div class="message-body">{{ m.message }}</div>
+        </article>
+        <article class="message">
+            <div class="message-header">
+                <p>Bot</p>
+                <button class="delete" aria-label="delete"></button>
+            </div>
+            <div class="message-body">{{ m.response }}</div>
+        </article>
+    </div>
+</div>
 {% endfor %}
-
-<input id="miInput" placeholder="Escribí un mensaje..." />
-<button onclick="enviar()">Enviar</button>
-
+<div class="hero-foot">
+    <input id="miInput" placeholder="Escribí un mensaje..." />
+    <button onclick="enviar()">Enviar</button>
+</div>
 <div id="respuesta"></div>
-
 <script>
     function enviar() {
         const valor = miInput.value;
