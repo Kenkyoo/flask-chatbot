@@ -1,9 +1,30 @@
 html {
     font-family: sans-serif;
-    background: #eee;
     padding: 1rem;
 }
 
 body {
     margin: 0 auto;
+}
+
+.flex-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+}
+.columns {
+    align-items: stretch;
+}
+
+@media (prefers-color-scheme: dark) {
+    :root {
+        /* Update CSS variables */
+    }
+}
+
+[data-theme="dark"],
+.theme-dark {
+    /* Update CSS variables */
 }

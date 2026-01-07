@@ -5,36 +5,41 @@
     rel="stylesheet"
     href="https://cdn.jsdelivr.net/npm/bulma@1.0.4/css/bulma.min.css"
 />
-<section class="hero is-primary is-medium">
+<section class="hero is-medium is-black px-5" data-theme="dark">
     <!-- Hero head: will stick at the top -->
     <div class="hero-head">
-        <nav class="navbar">
+        <nav
+            class="navbar has-background-primary-00 has-text-primary-00-invert is-dark"
+        >
             <div class="container">
                 <div class="navbar-brand">
-                    <a class="navbar-item">
-                        <img
-                            src="https://bulma.io/assets/images/bulma-type-white.png"
-                            alt="Logo"
-                        />
-                    </a>
-                    <span class="navbar-burger" data-target="navbarMenuHeroA">
+                    <a class="navbar-item"> Flask API </a>
+                    <span class="navbar-burger" data-target="navbarMenuHeroB">
                         <span></span>
                         <span></span>
                         <span></span>
                         <span></span>
                     </span>
                 </div>
-                <div id="navbarMenuHeroA" class="navbar-menu">
+                <div id="navbarMenuHeroB" class="navbar-menu">
                     <div class="navbar-end">
-                        <a class="navbar-item is-active"> Home </a>
-                        <a class="navbar-item"> Examples </a>
-                        <a class="navbar-item"> Documentation </a>
+                        <a href="/" class="navbar-item is-active"> Home </a>
+                        <a href="/api/data" class="navbar-item"> Api data </a>
+                        <a
+                            href="https://github.com/Kenkyoo/flask-api"
+                            class="navbar-item"
+                        >
+                            Repo
+                        </a>
                         <span class="navbar-item">
-                            <a class="button is-primary is-inverted">
+                            <a
+                                href="https://github.com/Kenkyoo"
+                                class="button is-info is-inverted"
+                            >
                                 <span class="icon">
                                     <i class="fab fa-github"></i>
                                 </span>
-                                <span>Download</span>
+                                <span>Github</span>
                             </a>
                         </span>
                     </div>
@@ -42,5 +47,12 @@
             </div>
         </nav>
     </div>
-    {% block content %} {% endblock %}
+    <div class="hero-body is-dark">
+        <p class="title">Chatbot</p>
+        <div
+            class="container box has-text-centered flex-container columns is-8 is-multiline"
+        >
+            {% block content %} {% endblock %}
+        </div>
+    </div>
 </section>
