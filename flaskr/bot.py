@@ -1,40 +1,99 @@
-def bot_response(message):
-    text = message.lower()
+# bot.py
+from difflib import SequenceMatcher
 
-    # --- Saludo y Ayuda ---
-    if "hola" in text or "buenos días" in text:
-        return "¡Hola! Soy el asistente virtual de [Tu Nombre]. ¿Qué te gustaría saber sobre mi perfil profesional?"
 
-    if "ayuda" in text or "que puedes hacer" in text:
-        return "Puedes preguntarme sobre: tecnologías, experiencia, proyectos, educación, contacto o mi ubicación."
+def bot_response(message: str) -> str:
+    text = message.strip().lower()
 
-    # --- Perfil Técnico ---
-    if "tecnologías" in text or "lenguajes" in text or "habilidades" in text:
-        return "Mis habilidades principales son: Python, Flask, SQL y control de versiones con Git."
+    def es_parecida(text, response, umbral=0.7):
+        ratio = SequenceMatcher(None, text, response).ratio()
+        return ratio >= umbral
 
-    if "proyectos" in text or "creado" in text:
-        return "He desarrollado este Chatbot, una API REST con Flask y [menciona otro proyecto corto]."
+    responses = {
+        # Saludos y ayuda
+        "saludo": ("hola", "buenos días", "buenas tardes", "hey", "hi"),
+        "ayuda": ("ayuda", "qué puedes hacer", "comandos", "qué sabes"),
+        # Perfil técnico
+        "tecnologias": (
+            "tecnologías",
+            "lenguajes",
+            "habilidades",
+            "stack",
+            "herramientas",
+        ),
+        "proyectos": ("proyectos", "has creado", "has hecho", "portfolio", "trabajos"),
+        # Experiencia y educación
+        "experiencia": ("experiencia", "trabajo", "trabajaste", "empleo"),
+        "educacion": (
+            "estudiaste",
+            "educación",
+            "formación",
+            "estudios",
+            "universidad",
+        ),
+        # Contacto
+        "contacto": ("contacto", "email", "correo", "mail"),
+        "linkedin": ("linkedin", "linked in"),
+        "github": ("github", "git hub", "repo", "código"),
+        # Otros
+        "ubicacion": ("dónde vives", "ubicación", "ciudad", "país"),
+    }
 
-    # --- Experiencia y Educación ---
-    if "experiencia" in text or "trabajó" in text:
-        return "He trabajado en proyectos de backend y automatización. Estoy enfocado en crear código limpio y eficiente."
+    # Respuestas personalizadas
+    if any(es_parecida(text, word) for word in responses["saludo"]):
+        return "¡Hola! Soy el asistente virtual de [Tu Nombre]. ¿En qué puedo ayudarte hoy? 😊"
 
-    if "estudió" in text or "educación" in text or "formación" in text:
-        return "Actualmente me formo de manera autodidacta en desarrollo backend y participo en comunidades de programación."
+    if any(es_parecida(text, word) for word in responses["ayuda"]):
+        return (
+            "Puedes preguntarme sobre:\n"
+            "- Tecnologías y habilidades\n"
+            "- Proyectos que he desarrollado\n"
+            "- Mi experiencia profesional\n"
+            "- Educación y formación\n"
+            "- Cómo contactarme (email, LinkedIn, GitHub)\n"
+            "- Dónde estoy ubicado"
+        )
 
-    # --- Información de Contacto ---
-    if "contacto" in text or "email" in text or "correo" in text:
-        return "Puedes contactarme en: tu-email@ejemplo.com"
+    if any(es_parecida(text, word) for word in responses["tecnologias"]):
+        return (
+            "Domino las siguientes tecnologías:\n"
+            "• Python (avanzado)\n"
+            "• Flask y FastAPI\n"
+            "• SQL y bases de datos (PostgreSQL, SQLite)\n"
+            "• Git y GitHub\n"
+            "• HTML/CSS básico y JavaScript"
+        )
 
-    if "linkedin" in text:
-        return "Mi perfil de LinkedIn es: linkedin.com/in/tu-usuario"
+    if any(es_parecida(text, word) for word in responses["proyectos"]):
+        return (
+            "Algunos proyectos destacados:\n"
+            "• Este mismo Chatbot inteligente con Flask 🎯\n"
+            "• API REST para gestión de tareas\n"
+            "• Script de automatización de backups\n"
+            "¡Puedes ver más en mi GitHub!"
+        )
 
-    if "github" in text:
-        return "Puedes ver mi código en: github.com/tu-usuario"
+    if any(es_parecida(text, word) for word in responses["experiencia"]):
+        return "Tengo experiencia desarrollando aplicaciones backend, automatizaciones y APIs. Me apasiona escribir código limpio, testable y bien documentado."
 
-    # --- Otros ---
-    if "donde vives" in text or "ubicación" in text:
-        return "Me encuentro en [Tu Ciudad/País], pero tengo disponibilidad para trabajo remoto."
+    if any(es_parecida(text, word) for word in responses["educacion"]):
+        return "Soy autodidacta apasionado por la programación. He completado cursos en Platzi, freeCodeCamp y Udemy, y sigo aprendiendo todos los días."
 
-    # --- Respuesta por defecto ---
-    return "Aún estoy aprendiendo. Puedes intentar preguntando por 'experiencia', 'proyectos' o 'contacto'."
+    if any(es_parecida(text, word) for word in responses["contacto"]):
+        return "¡Contáctame sin problema! Mi email es: tu-email@ejemplo.com"
+
+    if any(es_parecida(text, word) for word in responses["linkedin"]):
+        return "Mi LinkedIn: https://linkedin.com/in/tu-usuario"
+
+    if any(es_parecida(text, word) for word in responses["github"]):
+        return "Mi GitHub: https://github.com/tu-usuario"
+
+    if any(es_parecida(text, word) for word in responses["ubicacion"]):
+        return "Vivo en [Ciudad, País], pero estoy totalmente disponible para trabajo remoto 🌍"
+
+    # Respuesta por defecto divertida
+    return (
+        "Mmm... aún no entiendo esa pregunta 🤔\n"
+        "Prueba preguntándome sobre mis proyectos, tecnologías, experiencia o cómo contactarme.\n"
+        "¡O escribe 'ayuda' para ver lo que puedo hacer!"
+    )
