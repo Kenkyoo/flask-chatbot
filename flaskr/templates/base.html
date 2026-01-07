@@ -14,13 +14,13 @@
     <body data-theme="dark">
         <section class="hero is-medium is-black px-5">
             <!-- Hero head: will stick at the top -->
-            <div class="hero-head">
+            <div class="hero-head sticky">
                 <nav
                     class="navbar has-background-primary-00 has-text-primary-00-invert is-dark"
                 >
                     <div class="container">
                         <div class="navbar-brand">
-                            <a class="navbar-item"> Flask API </a>
+                            <a class="navbar-item"> ChatBot </a>
                             <span
                                 class="navbar-burger"
                                 data-target="navbarMenuHeroB"
@@ -36,11 +36,11 @@
                                 <a href="/" class="navbar-item is-active">
                                     Home
                                 </a>
-                                <a href="/api/data" class="navbar-item">
-                                    Api data
+                                <a href="/chat" class="navbar-item">
+                                    ChatBot
                                 </a>
                                 <a
-                                    href="https://github.com/Kenkyoo/flask-api"
+                                    href="https://github.com/Kenkyoo/flask-chatbot"
                                     class="navbar-item"
                                 >
                                     Repo
@@ -70,7 +70,9 @@
                 </div>
             </div>
         </section>
-        <footer class="footer">
+        <footer
+            class="footer has-background-primary-00 has-text-primary-00-invert is-dark"
+        >
             <div class="content has-text-centered">
                 <p>
                     <strong>Flask-api</strong> by
