@@ -18,6 +18,10 @@ body {
     align-items: stretch;
 }
 
+.vh-height {
+    height: 100vh;
+}
+
 @media (prefers-color-scheme: dark) {
     :root {
         /* Update CSS variables */

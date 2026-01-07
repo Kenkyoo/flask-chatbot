@@ -5,23 +5,35 @@
     rel="stylesheet"
     href="https://cdn.jsdelivr.net/npm/bulma@1.0.4/css/bulma.min.css"
 />
+<link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
+/>
 {% extends 'base.html' %} {% block content %} {% for m in messages %}
 <div class="column is-two-thirds">
-    <article class="message">
+    <article class="message animate__animated animate__slideInUp">
         <div class="message-header">
             <p>Tu</p>
             <button class="delete" aria-label="delete"></button>
         </div>
-        <div class="message-body" style="overflow-y: auto">{{ m.message }}</div>
+        <div
+            class="message-body animate__animated animate__fadeIn"
+            style="overflow-y: auto"
+        >
+            {{ m.message }}
+        </div>
     </article>
 </div>
 <div class="column is-two-third">
-    <article class="message">
+    <article class="message animate__animated animate__slideInUp">
         <div class="message-header">
             <p>Bot</p>
             <button class="delete" aria-label="delete"></button>
         </div>
-        <div class="message-body" style="overflow-y: auto">
+        <div
+            class="message-body animate__animated animate__fadeIn"
+            style="overflow-y: auto"
+        >
             {{ m.response }}
         </div>
     </article>
@@ -52,11 +64,11 @@
                     "beforebegin",
                     `
                 <div class="column is-two-thirds">
-                    <article class="message">
+                    <article class="message animate__animated animate__slideInUp">
                         <div class="message-header">
                             <p>Tu</p>
                         </div>
-                        <div class="message-body">${valor}</div>
+                        <div class="message-body animate__animated animate__fadeIn">${valor}</div>
                     </article>
                 </div>
             `,
@@ -66,12 +78,12 @@
                 document.querySelector(".hero-foot").insertAdjacentHTML(
                     "beforebegin",
                     `
-                <div class="column is-two-third">
-                    <article class="message">
+                <div class="column is-two-thirds vh-height">
+                    <article class="message animate__animated animate__slideInUp">
                         <div class="message-header">
                             <p>Bot</p>
                         </div>
-                        <div class="message-body">${data.resultado}</div>
+                        <div class="message-body animate__animated animate__fadeIn">${data.resultado}</div>
                     </article>
                 </div>
             `,
