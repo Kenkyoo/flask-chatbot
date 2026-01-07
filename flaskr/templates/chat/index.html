@@ -47,8 +47,36 @@
         })
             .then((r) => r.json())
             .then((data) => {
-                respuesta.innerHTML += `<p><b>Tú:</b> ${valor}</p>
-           <p><b>Bot:</b> ${data.resultado}</p>`;
+                // Mensaje del usuario
+                document.querySelector(".hero-foot").insertAdjacentHTML(
+                    "beforebegin",
+                    `
+                <div class="column is-two-thirds">
+                    <article class="message">
+                        <div class="message-header">
+                            <p>Tu</p>
+                        </div>
+                        <div class="message-body">${valor}</div>
+                    </article>
+                </div>
+            `,
+                );
+
+                // Respuesta del bot
+                document.querySelector(".hero-foot").insertAdjacentHTML(
+                    "beforebegin",
+                    `
+                <div class="column is-two-third">
+                    <article class="message">
+                        <div class="message-header">
+                            <p>Bot</p>
+                        </div>
+                        <div class="message-body">${data.resultado}</div>
+                    </article>
+                </div>
+            `,
+                );
+
                 miInput.value = "";
             });
     }
