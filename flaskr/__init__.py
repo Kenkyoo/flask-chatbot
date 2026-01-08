@@ -12,6 +12,10 @@ def create_app(test_config=None):
         app.config.from_pyfile("config.py", silent=True)
     else:
         app.config.update(test_config)
+
+    @app.route("/")
+    def index():
+        return render_template("hero.html")        
         
     @app.route("/hello")
     def hello():
