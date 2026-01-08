@@ -12,16 +12,18 @@ def create_app(test_config=None):
         app.config.from_pyfile("config.py", silent=True)
     else:
         app.config.update(test_config)
-
+        
     @app.route("/hello")
     def hello():
         return "Hello, World!"
-
+        
     from . import db
     db.init_app(app)
-
+    
     from . import chat
     app.register_blueprint(chat.bp)
-
+    
     app.add_url_rule("/", endpoint="index")
     return app
+
+app = create_app()
