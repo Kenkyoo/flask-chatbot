@@ -1,10 +1,70 @@
-{% extends "base.html" %}
-
-<section class="hero is-black is-fullheight">
+<!doctype html>
+<html>
+    <head>
+        <title>{% block title %}{% endblock %} - Flaskr</title>
+        <link
+            rel="stylesheet"
+            href="{{ url_for('static', filename='style.css') }}"
+        />
+        <link
+            rel="stylesheet"
+            href="https://cdn.jsdelivr.net/npm/bulma@1.0.4/css/bulma.min.css"
+        />
+    </head>
+    <body data-theme="dark">
+        <section class="hero is-medium is-black px-5">
+            <!-- Hero head: will stick at the top -->
+            <div class="hero-head sticky">
+                <nav
+                    class="navbar has-background-primary-00 has-text-primary-00-invert is-dark"
+                >
+                    <div class="container">
+                        <div class="navbar-brand">
+                            <a class="navbar-item"> ChatBot </a>
+                            <span
+                                class="navbar-burger"
+                                data-target="navbarMenuHeroB"
+                            >
+                                <span></span>
+                                <span></span>
+                                <span></span>
+                                <span></span>
+                            </span>
+                        </div>
+                        <div id="navbarMenuHeroB" class="navbar-menu">
+                            <div class="navbar-end">
+                                <a href="/" class="navbar-item is-active">
+                                    Home
+                                </a>
+                                <a href="/chat" class="navbar-item">
+                                    ChatBot
+                                </a>
+                                <a
+                                    href="https://github.com/Kenkyoo/flask-chatbot"
+                                    class="navbar-item"
+                                >
+                                    Repo
+                                </a>
+                                <span class="navbar-item">
+                                    <a
+                                        href="https://github.com/Kenkyoo"
+                                        class="button is-info is-inverted"
+                                    >
+                                        <span class="icon">
+                                            <i class="fab fa-github"></i>
+                                        </span>
+                                        <span>Github</span>
+                                    </a>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </nav>
+            </div>
   <!-- Hero head: will stick at the top -->
 
   <!-- Hero content: will be in the middle -->
-  <div class="hero-body">
+  <div class="hero-body is-black">
     <div class="container has-text-centered">
       <p class="title">ChatBot</p>
       <p class="subtitle">Build with flask and python</p>
@@ -12,4 +72,23 @@
       
     </div>
   </div>
-</section>
+        </section>
+        <footer
+            class="footer has-background-primary-00 has-text-primary-00-invert is-dark"
+        >
+            <div class="content has-text-centered">
+                <p>
+                    <strong>Flask-api</strong> by
+                    <a href="https://github.com/kenkyo">Kenkyo</a>. The source
+                    code is licensed
+                    <a href="https://opensource.org/license/mit">MIT</a>. The
+                    website content is licensed
+                    <a
+                        href="https://creativecommons.org/licenses/by-nc-sa/4.0//"
+                        >CC BY NC SA 4.0</a
+                    >.
+                </p>
+            </div>
+        </footer>
+    </body>
+</html>
