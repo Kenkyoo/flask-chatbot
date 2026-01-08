@@ -5,6 +5,7 @@ html {
 
 body {
     margin: 0 auto;
+    vh-height: 100vh;
 }
 
 .flex-container {
