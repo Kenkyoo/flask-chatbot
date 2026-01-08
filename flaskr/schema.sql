@@ -1,5 +1,4 @@
-DROP TABLE IF EXISTS chat;
-CREATE TABLE chat (
+CREATE TABLE IF NOT EXISTS chat (
   id SERIAL PRIMARY KEY,
   session_id TEXT,
   message TEXT,
