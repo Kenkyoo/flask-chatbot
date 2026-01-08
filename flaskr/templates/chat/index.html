@@ -16,11 +16,8 @@
             <p>Tu</p>
             <button class="delete" aria-label="delete"></button>
         </div>
-        <div
-            class="message-body animate__animated animate__fadeIn"
-            style="overflow-y: auto"
-        >
-            {{ m.message }}
+        <div class="message-body animate__animated animate__fadeIn" style="overflow-y: auto">
+            {{ m[0] }}
         </div>
     </article>
 </div>
@@ -30,11 +27,8 @@
             <p>Bot</p>
             <button class="delete" aria-label="delete"></button>
         </div>
-        <div
-            class="message-body animate__animated animate__fadeIn"
-            style="overflow-y: auto"
-        >
-            {{ m.response }}
+        <div class="message-body animate__animated animate__fadeIn" style="overflow-y: auto">
+            {{ m[1] }}
         </div>
     </article>
 </div>
